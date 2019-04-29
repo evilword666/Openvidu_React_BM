@@ -1,0 +1,31 @@
+{
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "not ie <= 11",
+        "not op_mini all"
+    ],
+    "dependencies": {
+        "@material-ui/core": "3.9.2",
+        "@material-ui/icons": "3.0.2",
+        "axios": "0.18.0",
+        "jquery": "3.3.1",
+        "openvidu-browser": "2.8.0",
+        "react": "16.8.3",
+        "react-dom": "16.8.3",
+        "react-scripts": "1.1.5"
+    },
+    "name": "openvidu-call-react",
+    "private": true,
+    "scripts": {
+        "build": "react-scripts build",
+        "build:openvidu-react": "node library-copy.js && cd ../library && npm run create-library",
+        "eject": "react-scripts eject",
+        "start": "react-scripts start",
+        "test": "react-scripts test --env=jsdom"
+    },
+    "version": "2.8.0",
+    "devDependencies": {
+        "react-app-rewired": "^2.1.0"
+    }
+}
