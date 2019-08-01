@@ -51,7 +51,7 @@ video {
 }
 
 #statusIcons {
-    bottom: 0;
+    bottom: 40px;
     background: #c71100;
     width: 40px;
     height: fit-content;

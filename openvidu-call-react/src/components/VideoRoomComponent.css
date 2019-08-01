@@ -78,7 +78,7 @@
   padding: 0;
   border: 0;
   font-size: 100%;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Poppins;
   vertical-align: baseline;
 }
 
@@ -900,4 +900,35 @@
   height:100%!important;
   top:0!important;
 }
+
+#contenedor{
+ background:rgba(0,0,0,.45);
+  margin: 0px auto;
+  width: 95px;
+  height: 34px;
+position:absolute;
+  z-index: 200;
+  right:0px;
+  text-align:right;
+  padding:5px 10px;
+  display: block;
+}
+.reloj{
+  display:inline;
+  font-size: 15px;
+  font-weight: bold;
+  color: green;
+  line-height: 20px;
+}
+
+@media all and (max-width: 570px){
+  #localUser .nickname{
+  width:100%!important;
+}
+  #nickname{
+    font-size:12px;
+    line-height:14px;
+  }
+}
+
 #header{background-color:#096a9c!important;}

@@ -9,15 +9,21 @@ import ChatComponent from './chat/ChatComponent';
 import OpenViduLayout from '../layout/openvidu-layout';
 import UserModel from '../models/user-model';
 import ToolbarComponent from './toolbar/ToolbarComponent';
+import Cronometro from './Cronometro/Cronometro';
+import TemporizadorApp from './temporizador/Temporizador';
+
+
+
 
 var localUser = new UserModel();
 
 class VideoRoomComponent extends Component {
     constructor(props) {
         super(props);
+        //alert(window.location.hostname)
         this.OPENVIDU_SERVER_URL = this.props.openviduServerUrl
             ? this.props.openviduServerUrl
-            : 'https://' + window.location.hostname + ':4443';
+            : 'https://' + window.location.hostname + ':4443'; //Aqui toma la direccion URL del servidor donde se encuentra alojado, en este caso topmeddr.com
         this.OPENVIDU_SERVER_SECRET = this.props.openviduSecret ? this.props.openviduSecret : 'MY_SECRET';
         this.hasBeenUpdated = false;
         this.layout = new OpenViduLayout();
@@ -37,7 +43,7 @@ class VideoRoomComponent extends Component {
         
 
         //let sessionName = this.props.sessionName ? this.props.sessionName : this.props.datosVideoAsistencia.nombre_room;
-        let sessionName = " ";
+        let sessionName = this.props.datosVideoAsistencia.token; //Importate pues si no se pone no se puede conectar con otras rooms por ejemplo las creadas con ionic
         let userName = "";
         if(this.props.datosVideoAsistencia.tipoUsuario == 'p'){        
             userName = this.props.user ? this.props.user : this.props.datosVideoAsistencia.nombre_paciente;
@@ -55,6 +61,7 @@ class VideoRoomComponent extends Component {
             localUser: undefined,
             subscribers: [],
             chatDisplay: 'none',
+            minutosRestantes: ''
         };
 
         this.joinSession = this.joinSession.bind(this);
@@ -79,6 +86,8 @@ class VideoRoomComponent extends Component {
 
 
 updateStatusDBopenViduTopMedical=(updateStatus)=>{    
+/*
+//Descomentar el codigo para insertar estado en la base de datos
         console.log("Entrando a updateStatusDBopenViduTopMedical")
      //var actualizacion = "https://msg.botonmedico.com/fire/AgendaBM_Notifications/updateStatusOpenViduBD.php?status="+updateStatus+"&token="+this.props.datosVideoAsistencia.token;
      var actualizacion = "https://topmedic.com.mx/accessDatabase/wp_DB/service/updateStatusOpenViduBD.php?status="+updateStatus+"&token="+this.props.datosVideoAsistencia.token;
@@ -100,11 +109,47 @@ updateStatusDBopenViduTopMedical=(updateStatus)=>{
             console.log("No se pudo realizar la actualizacion del status en la BD")
         }
                
-       })       
+       }) 
+*/            
 }
 
+obtenerMinutosRestantes=()=>{
+//let horaFinal = ("08:00:00").split(":"),
+//    horaInicial = ("07:40:00").split(":"),
+
+let horaFinal = this.props.datosVideoAsistencia.hora_final.split(":"),
+    horaActual = this.props.datosVideoAsistencia.hora_actual.split(":"),
+    t1 = new Date(),
+    t2 = new Date();
+
+
+    //alert(horaFinal)
+    //alert(horaActual)
+
+	t1.setHours(horaFinal[0], horaFinal[1], horaFinal[2]);
+	t2.setHours(horaActual[0], horaActual[1], horaActual[2]);
+ 
+	//Aquí hago la resta
+	t1.setHours(t1.getHours() - t2.getHours(), t1.getMinutes() - t2.getMinutes(), t1.getSeconds() - t2.getSeconds());
+	 let restantesMin = t1.getMinutes()
+
+//alert("Minutos restantes 1: "+restantesMin)
+
+     this.setState({
+        minutosRestantes:restantesMin
+     })
+
+
+     
+
+}
+
+componentWillMount(){  
+    this.obtenerMinutosRestantes()
+}
 
     componentDidMount() {
+
         const openViduLayoutOptions = {
             maxRatio: 3 / 2, // The narrowest ratio that will be used (default 2x3)
             minRatio: 9 / 16, // The widest ratio that will be used (default 16x9)
@@ -346,7 +391,7 @@ updateStatusDBopenViduTopMedical=(updateStatus)=>{
                         user.setScreenShareActive(data.isScreenShareActive);
                     }
                     console.log("Conectando un usuario remoto")
-                    this.updateStatusDBopenViduTopMedical('en_progreso')
+                    //this.updateStatusDBopenViduTopMedical('en_progreso')
                 }
             });
             this.setState(
@@ -501,10 +546,17 @@ updateStatusDBopenViduTopMedical=(updateStatus)=>{
         }
     }
 
+
+
     render() {
         const mySessionId = this.state.mySessionId;
         const localUser = this.state.localUser;
         var chatDisplay = { display: this.state.chatDisplay };
+
+        //leaveSession()
+        let min = localStorage.getItem("minutosTemporizador") 
+        let seg = localStorage.getItem("segundosTemporizador")         
+        console.log(min+":"+seg)
 
         return (
             <div className="container" id="container">
@@ -530,9 +582,22 @@ updateStatusDBopenViduTopMedical=(updateStatus)=>{
                         </div>
                     )}
                     {this.state.subscribers.map((sub, i) => (
+                        
+
                         <div key={i} className="OT_root OT_publisher custom-class" id="remoteUsers">
+                        
+                 
+                                         <TemporizadorApp
+                         minutosRestantes = {this.state.minutosRestantes}
+                         leaveSession={this.leaveSession}
+
+                     />
+                 
+                     
+
                             <StreamComponent user={sub} streamId={sub.streamManager.stream.streamId} />
                         </div>
+                        
                     ))}
                     {localUser !== undefined && localUser.getStreamManager() !== undefined && (
                         <div className="OT_root OT_publisher custom-class" style={chatDisplay}>

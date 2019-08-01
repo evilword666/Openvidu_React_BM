@@ -31,6 +31,13 @@ export default class Main extends Component{
       var hora = h + ":" + m + ":" + s;
       //x.innerHTML = h + ":" + m + ":" + s;
       //console.log(hora)
+
+/*
+        this.setState({
+          horaActual:hora
+        })  
+        */
+
       return hora;
 
 
@@ -106,10 +113,6 @@ componentWillMount(){
     this.obtenerFecha()
     //this.getTokenFromURL()
 
-    this.setState({
-        //fechaActual:fecha
-    })
-
 
 }
 
@@ -140,7 +143,7 @@ render(){
           resultado = <NoRoom/>
 
 	   	}else if(res.respuesta==500){
-          console.log("Error, No hay un room valido");       
+          console.log("Error, Session fuera de tiempo");       
           resultado = <FueraDeTiempo/>
 
 	   	}

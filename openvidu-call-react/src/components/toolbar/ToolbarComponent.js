@@ -79,8 +79,10 @@ export default class ToolbarComponent extends Component {
                         />
 
                         {this.props.sessionId && <div id="titleContent">
-                            <span id="session-title">{mySessionId}</span>
+                            <span id="session-title" Style="Display:none;">{mySessionId}</span>
                         </div>}
+
+
                     </div>
 
                     <div className="buttonsContent">
