@@ -13,7 +13,8 @@
         "openvidu-browser": "2.8.0",
         "react": "16.8.3",
         "react-dom": "16.8.3",
-        "react-scripts": "1.1.5"
+        "react-scripts": "1.1.5",
+        "react-spring": "^8.0.27"
     },
     "name": "openvidu-call-react",
     "private": true,

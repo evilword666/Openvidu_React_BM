@@ -36,9 +36,9 @@ module.exports = {
       // set the file paths & passphrase.
       const fs = require('fs');
       config.https = {
-        key: fs.readFileSync("/etc/nginx/ssl/certificados2/topmeddr.com.key", 'utf8'),
-        cert: fs.readFileSync("/etc/nginx/ssl/certificados2/ssl-bundle.crt", 'utf8'),
-        ca: fs.readFileSync("/etc/nginx/ssl/certificados2/topmeddr_com.ca-bundle", 'utf8'),
+        key: fs.readFileSync("/etc/apache2/certificados/vid_botonmedico_com.key", 'utf8'),
+        cert: fs.readFileSync("/etc/apache2/certificados/vid_botonmedico_com.crt", 'utf8'),
+        ca: fs.readFileSync("/etc/apache2/certificados/vid_botonmedico_com.ca-bundle", 'utf8'),
         passphrase: process.env.REACT_HTTPS_PASS
       };
 

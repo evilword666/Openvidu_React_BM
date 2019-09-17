@@ -51,7 +51,10 @@ class VideoRoomComponent extends Component {
             userName = this.props.user ? this.props.user : this.props.datosVideoAsistencia.nombre_medico;
         }
         
-
+	let id_paciente = this.props.datosVideoAsistencia.id_paciente;
+	localStorage.setItem("correo",id_paciente)
+///1539713050
+//alert( localStorage.getItem("correo"))
 
 
         this.state = {

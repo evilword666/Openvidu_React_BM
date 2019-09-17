@@ -13,8 +13,8 @@ return(
 
     
     <div class="image-box">
-    <img id="logonodisponible" src='https://topmedic.com.mx/wp-content/uploads/2019/07/openvidu_vert_white_bg_trans_cropped.png' alt="TOP Consultorio" />
-       
+{/*    <img id="logonodisponible" src='https://topmedic.com.mx/wp-content/uploads/2019/07/openvidu_vert_white_bg_trans_cropped.png' alt="TOP Consultorio" /> */}
+<img id="logonodisponible" src='http://i1.wp.com/www.botonmedico.com/wp-content/uploads/2018/04/BOTONMEDICO.png' alt="TOP Consultorio" />        
     </div>
 
 
@@ -27,7 +27,8 @@ return(
 
   <div class="buttons-con">
     <div class="action-link-wrap">      
-      <a href='http://topmedic.com.mx/' class='link-button'>Ir al inicio</a>
+{/*       <a href='http://topmedic.com.mx/' class='link-button'>Ir al inicio</a>  */}
+      <a href='http://www.botonmedico.com' class='link-button'>Ir al inicio</a>
     </div>
   </div>
 </div>

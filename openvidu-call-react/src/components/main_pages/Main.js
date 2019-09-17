@@ -85,7 +85,13 @@ getTokenFromURL=(fechaS,horaS)=>{
 	
 	//alert(URL_React)
 //	 fetch("https://msg.botonmedico.com/fire/AgendaBM_Notifications/verificarTokenOpenVidu.php?token="+separado[3]+"&fecha_consulta_link="+fechaS+"&hora_consulta_link="+horaS)
-fetch("https://topmedic.com.mx/accessDatabase/wp_DB/service/verificarTokenOpenVidu.php?token="+separado[3]+"&fecha_consulta_link="+fechaS+"&hora_consulta_link="+horaS)
+//fetch("https://topmedic.com.mx/accessDatabase/wp_DB/service/verificarTokenOpenVidu.php?token="+separado[3]+"&fecha_consulta_link="+fechaS+"&hora_consulta_link="+horaS)
+
+//Servidor nuevo de videoconferencia openvidu
+fetch("https://vid.botonmedico.com/wp_DB/service/verificarTokenOpenVidu.php?token="+separado[3]+"&fecha_consulta_link="+fechaS+"&hora_consulta_link="+horaS)
+
+//fetch("http://178.238.225.3/wp_DB/service/verificarTokenOpenVidu.php?token="+separado[3]+"&fecha_consulta_link="+fechaS+"&hora_consulta_link="+horaS)
+//fetch("https://exp.botonmedico.com/wp_DB/service/verificarTokenOpenVidu.php?token="+separado[3]+"&fecha_consulta_link="+fechaS+"&hora_consulta_link="+horaS)
    
 	 //fetch("https://msg.botonmedico.com/fire/AgendaBM_Notifications/homenoti.php")
 	 //fetch("https://jsonplaceholder.typicode.com/posts")
