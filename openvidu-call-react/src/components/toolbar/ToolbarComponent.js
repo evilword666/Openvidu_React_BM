@@ -7,7 +7,7 @@ import IconExpediente from './exp_icon_g.png';
 import IconHB from './hb_icon.png';
 import Demo from './ModalExpediente2';
 import Actualizar from './update.png';
-
+import LogoBM from './logo_bm_large.png';
 
 
 //import Expediente from '@material-ui/icon/Assignment';
@@ -157,9 +157,10 @@ refreshPage=()=>{
                             id="header_img"
                             alt="Topmedical Logo"
                             //src="https://raw.githubusercontent.com/OpenVidu/openvidu-call/master/front/openvidu-call/src/assets/images/openvidu_logo.png"
-                            src="http://www.botonmedico.com/wp-content/uploads/2018/04/BOTONMEDICO.png"
+//                            src="http://www.botonmedico.com/wp-content/uploads/2018/04/BOTONMEDICO.png"
                             //src="http://medicos.botonmedico.com/wp-content/uploads/2019/03/logo.png"
                             //src="https://topmedic.com.mx/wp-content/uploads/2019/04/logo-blanco.png"
+			    src={LogoBM}
                         />
 
                         {this.props.sessionId && <div id="titleContent">

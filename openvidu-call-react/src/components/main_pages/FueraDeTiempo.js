@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './NoRoom.css';
 import logo from './clock2.png';
-
+import LogoBM from './logo_bm_large.png';
 
 export default class Finalizado extends Component{
 
@@ -14,7 +14,7 @@ return(
     
     <div class="image-box">
 {/*    <img id="logonodisponible" src='https://topmedic.com.mx/wp-content/uploads/2019/07/openvidu_vert_white_bg_trans_cropped.png' alt="TOP Consultorio" /> */}
-<img id="logonodisponible" src='http://i1.wp.com/www.botonmedico.com/wp-content/uploads/2018/04/BOTONMEDICO.png' alt="TOP Consultorio" />        
+<img id="logonodisponible" src={LogoBM} alt="TOP Consultorio" />        
     </div>
 
 
