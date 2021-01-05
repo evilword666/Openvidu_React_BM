@@ -8,7 +8,7 @@
     "dependencies": {
         "@material-ui/core": "3.9.2",
         "@material-ui/icons": "3.0.2",
-        "axios": "0.18.0",
+        "axios": "0.21.1",
         "jquery": "3.3.1",
         "openvidu-browser": "2.8.0",
         "react": "16.8.3",
